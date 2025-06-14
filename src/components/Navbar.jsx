@@ -3,10 +3,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   const links = [
     { href: "/", label: "Home" },
@@ -18,8 +22,15 @@ export default function Navbar() {
   ];
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 w-full px-4 md:px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center z-30 bg-transparent">
+    <div>
+      <nav
+        className={`${
+          isHome ? "absolute" : "fixed"
+        } top-0 left-0 w-full px-4 md:px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center z-30 ${
+          isHome ? "bg-transparent" : "bg-[#0a0a0a]"
+        }
+        `}
+      >
         {/* Logo: scales from text-lg → text-2xl */}
         <Link
           href="/"
@@ -85,6 +96,6 @@ export default function Navbar() {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
