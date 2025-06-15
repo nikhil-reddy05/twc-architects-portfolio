@@ -19,7 +19,11 @@ export default function ProjectGallery({ projects, basePath }) {
               height={400}
               className="object-cover w-full h-60 sm:h-64 lg:h-72 group-hover:brightness-50 group-hover:scale-105 transition-transform duration-300"
             />
-
+            <div className="absolute bottom-1 w-full  flex justify-center xl:hidden">
+              <h4 className="text-white text-sm text-center w-[70%] bg-[#0a0a0a]/90 backdrop-blur-sm font-semibold mb-2 rounded-2xl flex justify-center">
+                {title}
+              </h4>
+            </div>
             {/* 3) Info overlay (title + description) */}
             <div
               className="

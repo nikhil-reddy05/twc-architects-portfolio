@@ -111,11 +111,11 @@ Looking forward to hearing from you!`;
 
   return (
     <section className="pt-12 pb-8 max-w-2xl mx-auto px-4">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8 uppercase text-center">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-8 uppercase text-center">
         Get a Quote
       </h1>
 
-      <form onSubmit={handleEmailSubmit} className="space-y-6">
+      <form onSubmit={handleEmailSubmit} className="space-y-6 text-sm md:text-lg">
         <input
           type="text"
           name="name"

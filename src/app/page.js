@@ -27,7 +27,7 @@ export default function Home() {
 
       {/* centered content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
           Crafting Spaces with Meaning
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-6 drop-shadow">

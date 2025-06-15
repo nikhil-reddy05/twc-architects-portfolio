@@ -10,7 +10,7 @@ export default function ArchitectureProjectPage({ params }) {
 
   return (
     <section className="pt-12 pb-8 max-w-5xl mx-auto px-4">
-      <h1 className="text-3xl sm:text-4xl font-bold uppercase mb-4 text-center">
+      <h1 className="text-2xl sm:text-3xl font-bold uppercase mb-4 text-center">
         {project.title}
       </h1>
 

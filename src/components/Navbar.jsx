@@ -1,101 +1,117 @@
-// app/components/Navbar.jsx
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/architecture", label: "Architecture" },
-    { href: "/interiors", label: "Interiors" },
-    { href: "/quote", label: "Quote" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+  // Effect to prevent body scrolling when the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Architecture", href: "/architecture" },
+    { label: "Interiors", href: "/interiors" },
+    { label: "Quote", href: "/quote" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
+  // Determine navbar background based on page and scroll position (optional improvement)
+  // For simplicity, we'll stick to the original logic for now.
+  const isHomePage = pathname === "/";
+  const navBgClass = isHomePage
+    ? "bg-transparent"
+    : "bg-[#0a0a0a]/90 backdrop-blur-sm";
+
   return (
-    <div>
+    <>
       <nav
-        className={`${
-          isHome ? "absolute" : "fixed"
-        } top-0 left-0 w-full px-4 md:px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center z-30 ${
-          isHome ? "bg-transparent" : "bg-[#0a0a0a]"
-        }
-        `}
+        className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between transition-colors duration-300 ${navBgClass} text-white`}
       >
-        {/* Logo: scales from text-lg → text-2xl */}
+        {/* Logo */}
         <Link
           href="/"
-          className="
-            text-lg 
-            md:text-xl 
-            lg:text-2xl 
-            font-bold 
-            tracking-[0.35em] 
-            text-white 
-            uppercase 
-            hover:opacity-90 
-            transition
-          "
+          className="text-xl sm:text-lg font-bold tracking-[0.25em] uppercase whitespace-nowrap"
         >
-          TWC ARCHITECTS PVT LTD.
+          TWC ARCHITECTS
         </Link>
 
-        {/* Show inline links only on large (≥lg) screens */}
-        <div className="hidden lg:flex space-x-6 uppercase text-sm lg:text-base text-white">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="hover:opacity-80 transition"
-            >
-              {label}
-            </Link>
-          ))}
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center space-x-8 text-sm uppercase">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-colors duration-300 ${
+                  isActive
+                    ? "text-white font-semibold"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Hamburger on all screens below lg */}
+        {/* Hamburger Button */}
         <button
-          className="lg:hidden text-white focus:outline-none"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
+          className="lg:hidden text-white z-50" // z-50 to ensure it's above the overlay's backdrop
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-controls="mobile-menu"
+          aria-expanded={isOpen}
         >
-          <Menu size={24} />
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
-      {/* Fullscreen overlay for mobile & tablet (below lg) */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-95 flex flex-col items-center justify-center space-y-8 lg:hidden">
-          {/* Close button */}
-          <button
-            className="absolute top-4 right-4 text-white p-2"
-            onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            <X size={24} />
-          </button>
+      {/* Mobile Menu Overlay with Animation */}
+      <div
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ease-in-out ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsOpen(false)} // Close menu when clicking the overlay
+      >
+        <div className="absolute inset-0  bg-opacity-50 backdrop-blur-sm"></div>
 
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-white text-2xl font-medium uppercase hover:opacity-80 transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
+        {/* Sliding Menu Panel */}
+        <div
+          className={`absolute top-0 right-0 h-full w-4/5 max-w-sm bg-[#0a0a0a] shadow-lg transform transition-transform duration-300 ease-in-out ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          onClick={(e) => e.stopPropagation()} // Prevent clicks inside the menu from closing it
+        >
+          <div className="flex flex-col items-center justify-center h-full space-y-8 text-xl uppercase text-white">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`transition ${
+                    isActive
+                      ? "opacity-100 font-bold"
+                      : "opacity-80 hover:opacity-100"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }

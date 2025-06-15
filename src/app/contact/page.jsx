@@ -6,12 +6,12 @@ import { MdOutlineEmail } from "react-icons/md";
 export default function ContactPage() {
   return (
     <section className="pt-8 pb-2 px-6  max-w-4xl mx-auto text-white">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-10 uppercase text-center">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-10 uppercase text-center">
         Contact Us
       </h1>
 
       {/* Contact Details */}
-      <div className="space-y-6 text-lg text-gray-300 mb-12">
+      <div className="space-y-6 text-sm text-gray-300 mb-12 md:text-lg">
         <p>
           <strong>Phone:</strong>{" "}
           <a href="tel:+917330761540" className="text-blue-400 hover:underline">
@@ -33,12 +33,12 @@ export default function ContactPage() {
       </div>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
         <a
           href="mailto:twcarchitects@gmail.com"
           className="cursor-pointer bg-white text-black font-semibold py-3 px-6 rounded-md text-center hover:bg-gray-200 transition"
         >
-          <p className="flex text-[17px]">
+          <p className="flex text-[14px] md:text-[17px]">
             <MdOutlineEmail className="mr-2 h-6 w-6" /> Email
           </p>
         </a>
@@ -49,7 +49,7 @@ export default function ContactPage() {
           rel="noopener noreferrer"
           className="cursor-pointer bg-green-500 text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-green-600 transition"
         >
-          <p className="flex text-[17px]">
+          <p className="flex text-[14px] md:text-[17px]">
             <FaWhatsapp className="mr-2 h-6 w-6" /> WhatsApp
           </p>
         </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
           rel="noopener noreferrer"
           className="cursor-pointer bg-[#d62976] text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-[#ba1c63] transition"
         >
-          <p className="flex text-[17px]">
+          <p className="flex text-[14px] md:text-[17px]">
             <BsInstagram className="mr-2 h-6 w-6" /> Instagram
           </p>
         </a>

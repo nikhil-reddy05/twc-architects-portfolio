@@ -1,12 +1,12 @@
 export default function AboutPage() {
   return (
     <section className="pt-12 pb-8 px-6 max-w-5xl mx-auto text-white">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-8 uppercase text-center">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-8 uppercase text-center">
         About Us
       </h1>
 
       {/* Firm Story */}
-      <div className="mb-12 space-y-4 text-lg leading-relaxed text-gray-300">
+      <div className="mb-12 space-y-4 text-base leading-relaxed text-gray-300 md:text-lg">
         <p>
           <strong>The White Walls Company</strong> is a multidisciplinary design
           studio committed to creating thoughtful, elegant spaces that
@@ -21,7 +21,7 @@ export default function AboutPage() {
       </div>
 
       {/* Team */}
-      <h2 className="text-2xl font-semibold mb-10 uppercase text-center">
+      <h2 className="text-lg font-semibold mb-10 uppercase text-center md:text-2xl">
         Meet the Team
       </h2>
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
             </div>
 
             {/* Name & role */}
-            <h3 className="text-xl font-semibold text-white mb-1">
+            <h3 className="text-lg font-semibold text-white mb-1 md:text-xl">
               {member.name}
             </h3>
             <p className="text-gray-400 text-sm mb-3">{member.role}</p>
