@@ -1,32 +1,54 @@
-// app/page.js
 "use client";
 
-import { useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+// import Link from "next/link";
+
+const images = [
+  "/images/hero-bg.jpg",
+  "/images/hero-bg-2.jpg",
+  "/images/hero-bg-3.jpg",
+  "/images/hero-bg-4.jpg",
+  "/images/hero-bg-5.jpg",
+];
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
+
   useEffect(() => {
-    // disable scrolling
     document.body.style.overflow = "hidden";
     return () => {
-      // re-enable scrolling if you ever unmount
       document.body.style.overflow = "";
     };
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 2000); // 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="fixed inset-0">
-      {/* full-bleed background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-      />
+      {/* Slideshow backgrounds */}
+      {images.map((src, i) => (
+        <div
+          key={i}
+          className={`
+            absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out
+            ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"}
+          `}
+          style={{ backgroundImage: `url('${src}')` }}
+        />
+      ))}
 
-      {/* gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+      {/* Gradient overlay */}
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-20" /> */}
 
-      {/* centered content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8">
+      {/* Optional: Centered content */}
+      {/* 
+      <div className="relative z-30 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8">
         <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
           Crafting Spaces with Meaning
         </h1>
@@ -41,6 +63,7 @@ export default function Home() {
           Get a Quote
         </Link>
       </div>
+      */}
     </section>
   );
 }
