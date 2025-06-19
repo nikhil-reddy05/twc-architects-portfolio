@@ -17,7 +17,6 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Architecture", href: "/architecture" },
     { label: "Interiors", href: "/interiors" },
-    { label: "Quote", href: "/quote" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

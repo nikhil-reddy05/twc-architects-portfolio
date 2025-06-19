@@ -2,6 +2,7 @@
 import { BsInstagram } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import Quote from "@/components/Quote";
 
 export default function ContactPage() {
   return (
@@ -36,9 +37,9 @@ export default function ContactPage() {
       <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
         <a
           href="mailto:twcarchitects@gmail.com"
-          className="cursor-pointer bg-white text-black font-semibold py-3 px-6 rounded-md text-center hover:bg-gray-200 transition"
+          className="cursor-pointer min-w-[200px] bg-white text-black font-semibold py-3 px-6 rounded-md text-center hover:bg-gray-200 transition"
         >
-          <p className="flex text-[14px] md:text-[17px]">
+          <p className="flex text-[14px] md:text-[17px] justify-center">
             <MdOutlineEmail className="mr-2 h-6 w-6" /> Email
           </p>
         </a>
@@ -47,9 +48,9 @@ export default function ContactPage() {
           href="https://wa.me/917330761540"
           target="_blank"
           rel="noopener noreferrer"
-          className="cursor-pointer bg-green-500 text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-green-600 transition"
+          className="cursor-pointer min-w-[200px] bg-green-500 text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-green-600 transition"
         >
-          <p className="flex text-[14px] md:text-[17px]">
+          <p className="flex text-[14px] md:text-[17px] justify-center">
             <FaWhatsapp className="mr-2 h-6 w-6" /> WhatsApp
           </p>
         </a>
@@ -58,9 +59,9 @@ export default function ContactPage() {
           href="https://instagram.com/thewhitewallsco"
           target="_blank"
           rel="noopener noreferrer"
-          className="cursor-pointer bg-[#d62976] text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-[#ba1c63] transition"
+          className="cursor-pointer min-w-[200px] bg-[#d62976] text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-[#ba1c63] transition"
         >
-          <p className="flex text-[14px] md:text-[17px]">
+          <p className="flex text-[14px] md:text-[17px] justify-center">
             <BsInstagram className="mr-2 h-6 w-6" /> Instagram
           </p>
         </a>
@@ -77,6 +78,8 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
+
+      <Quote />
     </section>
   );
 }

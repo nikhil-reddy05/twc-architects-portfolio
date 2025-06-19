@@ -4,7 +4,7 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import toast from "react-hot-toast";
 
-export default function QuotePage() {
+export default function Quote() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -115,7 +115,10 @@ Looking forward to hearing from you!`;
         Get a Quote
       </h1>
 
-      <form onSubmit={handleEmailSubmit} className="space-y-6 text-sm md:text-lg">
+      <form
+        onSubmit={handleEmailSubmit}
+        className="space-y-6 text-sm md:text-lg"
+      >
         <input
           type="text"
           name="name"
