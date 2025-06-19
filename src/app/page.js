@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-// import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 
 const images = [
   "/images/hero-bg.jpg",
@@ -13,6 +13,7 @@ const images = [
 
 export default function Home() {
   const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -21,17 +22,28 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  const resetTimer = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 2000); // 2 seconds
+    }, 2500);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  useEffect(() => {
+    resetTimer();
+    return () => clearTimeout(timeoutRef.current);
+  }, [index]);
+
+  const goToPrev = () => {
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToNext = () => {
+    setIndex((prev) => (prev + 1) % images.length);
+  };
 
   return (
-    <section className="fixed inset-0">
-      {/* Slideshow backgrounds */}
+    <section className="fixed inset-0 select-none">
       {images.map((src, i) => (
         <div
           key={i}
@@ -43,27 +55,21 @@ export default function Home() {
         />
       ))}
 
-      {/* Gradient overlay */}
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-20" /> */}
-
-      {/* Optional: Centered content */}
-      {/* 
-      <div className="relative z-30 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
-          Crafting Spaces with Meaning
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-6 drop-shadow">
-          Welcome to TWC Architects—where architecture and interiors come
-          together to shape elegant, functional spaces.
-        </p>
-        <Link
-          href="/quote"
-          className="px-6 sm:px-8 py-2 sm:py-3 bg-white text-black rounded-full font-semibold shadow-md hover:bg-gray-200 transition"
-        >
-          Get a Quote
-        </Link>
-      </div>
-      */}
+      {/* Click zones */}
+      <div
+        className="absolute inset-y-0 left-0 w-1/2 z-30 cursor-pointer"
+        onClick={() => {
+          goToPrev();
+          resetTimer();
+        }}
+      />
+      <div
+        className="absolute inset-y-0 right-0 w-1/2 z-30 cursor-pointer"
+        onClick={() => {
+          goToNext();
+          resetTimer();
+        }}
+      />
     </section>
   );
 }
