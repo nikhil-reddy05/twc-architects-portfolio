@@ -35,14 +35,14 @@ export default function ContactPage() {
 
       {/* CTA Buttons */}
       <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
-        <a
+        {/* <a
           href="mailto:twcarchitects@gmail.com"
           className="cursor-pointer min-w-[200px] bg-white text-black font-semibold py-3 px-6 rounded-md text-center hover:bg-gray-200 transition"
         >
           <p className="flex text-[14px] md:text-[17px] justify-center">
             <MdOutlineEmail className="mr-2 h-6 w-6" /> Email
           </p>
-        </a>
+        </a> */}
 
         <a
           href="https://wa.me/917330761540"

@@ -14,6 +14,11 @@ const lexendMega = Lexend_Mega({
 export const metadata = {
   title: "TWC Architects",
   description: "The White Walls Company Portfolio",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
