@@ -1,10 +1,10 @@
-// app/architecture/[slug]/page.jsx
 import architectureProjects from "@/data/architectureProjects";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-export default function ArchitectureProjectPage({ params }) {
-  const project = architectureProjects.find((p) => p.slug === params.slug);
+export default async function ArchitectureProjectPage({ params }) {
+  const { slug } = await params;
+  const project = architectureProjects.find((p) => p.slug === slug);
 
   if (!project) return notFound();
 

@@ -1,18 +1,15 @@
 @import "tailwindcss";
 
-/* 1. Tailwind base, components, utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Color and font variables */
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
   --font-lexend-mega: "Lexend Mega", sans-serif;
 }
 
-/* 3. Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -20,7 +17,6 @@
   }
 }
 
-/* 4. Global reset + typography */
 html,
 body {
   background-color: var(--background);
@@ -30,7 +26,6 @@ body {
   padding: 0;
 }
 
-/* 5. Make sure body can scroll */
 body {
   overflow-x: hidden;
 }

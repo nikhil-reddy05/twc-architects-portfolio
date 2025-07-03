@@ -21,8 +21,6 @@ export default function Navbar() {
     { label: "Contact", href: "/contact" },
   ];
 
-  // Determine navbar background based on page and scroll position (optional improvement)
-  // For simplicity, we'll stick to the original logic for now.
   const isHomePage = pathname === "/";
   const navBgClass = isHomePage
     ? "bg-transparent"
@@ -63,7 +61,7 @@ export default function Navbar() {
 
         {/* Hamburger Button */}
         <button
-          className="lg:hidden text-white z-50" // z-50 to ensure it's above the overlay's backdrop
+          className="lg:hidden text-white z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-controls="mobile-menu"

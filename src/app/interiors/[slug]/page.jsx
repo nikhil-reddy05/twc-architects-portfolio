@@ -1,10 +1,10 @@
-// app/interiors/[slug]/page.jsx
 import interiorProjects from "@/data/interiorProjects";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-export default function InteriorProjectPage({ params }) {
-  const project = interiorProjects.find((p) => p.slug === params.slug);
+export default async function InteriorProjectPage({ params }) {
+  const { slug } = await params;
+  const project = interiorProjects.find((p) => p.slug === slug);
 
   if (!project) return notFound();
 

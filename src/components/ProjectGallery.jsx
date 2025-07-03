@@ -1,4 +1,3 @@
-// app/components/ProjectGallery.jsx
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,13 +10,14 @@ export default function ProjectGallery({ projects, basePath }) {
           className="relative overflow-hidden rounded-xl shadow-lg group"
         >
           <Link href={`/${basePath}/${slug}`} className="block w-full h-full">
-            {/* 1) The image */}
+            {/*The image */}
             <Image
               src={image}
               alt={title}
               width={600}
               height={400}
-              loading="lazy"i
+              loading="lazy"
+              i
               className="object-cover w-full h-60 sm:h-64 lg:h-72 group-hover:brightness-50 group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute bottom-1 w-full  flex justify-center xl:hidden">
@@ -25,7 +25,7 @@ export default function ProjectGallery({ projects, basePath }) {
                 {title}
               </h4>
             </div>
-            {/* 3) Info overlay (title + description) */}
+            {/* Info overlay*/}
             <div
               className="
               absolute inset-0

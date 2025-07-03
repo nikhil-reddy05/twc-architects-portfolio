@@ -21,10 +21,10 @@ export default function ContactPage() {
         <p>
           <strong>Email:</strong>
           <a
-            href="mailto:jellapranav@gmail.com"
+            href="mailto:thewhitewallscompany@gmail.com"
             className="text-blue-400 hover:underline"
           >
-            jellapranav@gmail.com
+            thewhitewallscompany@gmail.com
           </a>
         </p>
         <p>
@@ -57,7 +57,7 @@ export default function ContactPage() {
         </a>
       </div>
 
-      {/* Optional: Google Map */}
+      {/* Google Map */}
       <div className="mt-16 w-full rounded-lg overflow-hidden">
         <iframe
           title="TWC Architects Location"
