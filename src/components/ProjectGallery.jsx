@@ -17,6 +17,7 @@ export default function ProjectGallery({ projects, basePath }) {
               alt={title}
               width={600}
               height={400}
+              loading="lazy"i
               className="object-cover w-full h-60 sm:h-64 lg:h-72 group-hover:brightness-50 group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute bottom-1 w-full  flex justify-center xl:hidden">

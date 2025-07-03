@@ -1,7 +1,6 @@
 "use client";
 import { BsInstagram } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
 import Quote from "@/components/Quote";
 
 export default function ContactPage() {
@@ -14,18 +13,18 @@ export default function ContactPage() {
       {/* Contact Details */}
       <div className="space-y-6 text-sm text-gray-300 mb-12 md:text-lg">
         <p>
-          <strong>Phone:</strong>{" "}
-          <a href="tel:+917330761540" className="text-blue-400 hover:underline">
-            +91 73307 61540
+          <strong>Phone:</strong>
+          <a href="tel:+917036113378" className="text-blue-400 hover:underline">
+            +91 7036113378
           </a>
         </p>
         <p>
-          <strong>Email:</strong>{" "}
+          <strong>Email:</strong>
           <a
-            href="mailto:twcarchitects@gmail.com"
+            href="mailto:jellapranav@gmail.com"
             className="text-blue-400 hover:underline"
           >
-            twcarchitects@gmail.com
+            jellapranav@gmail.com
           </a>
         </p>
         <p>
@@ -35,15 +34,6 @@ export default function ContactPage() {
 
       {/* CTA Buttons */}
       <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
-        {/* <a
-          href="mailto:twcarchitects@gmail.com"
-          className="cursor-pointer min-w-[200px] bg-white text-black font-semibold py-3 px-6 rounded-md text-center hover:bg-gray-200 transition"
-        >
-          <p className="flex text-[14px] md:text-[17px] justify-center">
-            <MdOutlineEmail className="mr-2 h-6 w-6" /> Email
-          </p>
-        </a> */}
-
         <a
           href="https://wa.me/917330761540"
           target="_blank"

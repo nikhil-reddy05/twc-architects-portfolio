@@ -25,8 +25,8 @@ export default function Quote() {
     toast.loading("Sending email...");
     try {
       const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
         {
           name: formData.name,
           email: formData.email,
@@ -35,7 +35,7 @@ export default function Quote() {
           budget: formData.budget,
           description: formData.description,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        process.env.EMAILJS_PUBLIC_KEY
       );
 
       toast.dismiss();
@@ -102,7 +102,7 @@ Description: ${description}
 Looking forward to hearing from you!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = process.env.NEXT_WHATSAPP_NUMBER;
+    const whatsappNumber = process.env.WHATSAPP_NUMBER;
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
       "_blank"

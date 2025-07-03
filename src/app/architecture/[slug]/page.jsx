@@ -29,6 +29,7 @@ export default function ArchitectureProjectPage({ params }) {
               alt={`${project.title} image ${index + 1}`}
               fill
               className="object-cover"
+              loading="lazy"
             />
           </div>
         ))}
