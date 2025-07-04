@@ -113,7 +113,7 @@ Description: ${description}
 Looking forward to hearing from you!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = process.env.WHATSAPP_NUMBER;
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
       "_blank"
