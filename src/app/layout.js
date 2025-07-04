@@ -5,7 +5,6 @@ import { Lexend_Mega } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import { Viewport } from "next";
 
 const lexendMega = Lexend_Mega({
   subsets: ["latin"],

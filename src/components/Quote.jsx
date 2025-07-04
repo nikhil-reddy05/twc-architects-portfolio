@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "emailjs-com";
 import toast from "react-hot-toast";
 
 export default function Quote() {
@@ -24,22 +23,34 @@ export default function Quote() {
     e.preventDefault();
     toast.loading("Sending email...");
     try {
-      const result = await emailjs.send(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
-        {
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone || "N/A",
           type: formData.type,
           budget: formData.budget,
           description: formData.description,
-        },
-        process.env.EMAILJS_PUBLIC_KEY
-      );
+        }),
+      });
 
       toast.dismiss();
-      toast.success("Email sent successfully!");
+
+      if (res.ok) {
+        toast.success("Email sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          type: "",
+          budget: "",
+          description: "",
+        });
+      } else {
+        toast.error("Failed to send email. Please try again.");
+      }
     } catch (error) {
       toast.dismiss();
       toast.error("Failed to send email. Please try again.");
