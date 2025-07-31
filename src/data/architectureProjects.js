@@ -2,6 +2,9 @@ const architectureProjects = [
   {
     id: 1,
     slug: "mountain-retreat",
+    location: "Nalgonda",
+    year: 2024,
+    area: "2500",
     title: "Mountain Retreat",
     image: "/images/architecture/mt-retreat.jpg",
     description:
@@ -12,11 +15,16 @@ const architectureProjects = [
       "/images/architecture/mt-retreat.jpg",
       "/images/architecture/mt-retreat-2.jpg",
       "/images/architecture/mt-retreat-3.jpg",
+      "/images/architecture/mt-retreat-2.jpg",
+      "/images/architecture/mt-retreat-3.jpg",
     ],
   },
   {
     id: 2,
     slug: "urban-lofts",
+    location: "Nalgonda",
+    year: 2023,
+    area: "250",
     title: "Urban Lofts",
     image: "/images/architecture/urban-lofts.jpg",
     description:
@@ -27,11 +35,17 @@ const architectureProjects = [
       "/images/architecture/urban-lofts.jpg",
       "/images/architecture/urban-lofts-2.jpg",
       "/images/architecture/urban-lofts-3.jpg",
+      "/images/architecture/urban-lofts.jpg",
+      "/images/architecture/urban-lofts-2.jpg",
+      "/images/architecture/urban-lofts-3.jpg",
     ],
   },
   {
     id: 3,
     slug: "glass-pavilion",
+    location: "Hyderabad",
+    year: 2024,
+    area: "250",
     title: "Glass Pavilion",
     image: "/images/architecture/glass-pavilion.jpg",
     description:

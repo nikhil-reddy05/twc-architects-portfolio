@@ -25,7 +25,7 @@ export const metadata = {
     title: "TWC Architects",
     description:
       "The White Walls Company - A modern architecture and interior design firm.",
-    url: "https://twc-architects-portfolio.vercel.app/",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     siteName: "WC Architects",
     type: "website",
     images: [{ url: "/twc-b.png", alt: "The White Walls Company" }],

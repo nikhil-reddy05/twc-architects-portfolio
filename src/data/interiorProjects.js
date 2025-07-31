@@ -3,6 +3,9 @@ const interiorProjects = [
     id: 1,
     slug: "modern-living-room",
     title: "Modern Living Room",
+    location: "Hyderabad",
+    year: 2024,
+    area: "250",
     image: "/images/interiors/living-room.jpeg",
     description:
       "A cozy yet refined space with neutral tones, ambient lighting, and minimal furniture.",
@@ -18,6 +21,9 @@ const interiorProjects = [
     id: 2,
     slug: "artistic-loft",
     title: "Artistic Loft",
+    location: "Hyderabad",
+    year: 2024,
+    area: "250",
     image: "/images/interiors/loft.jpeg",
     description:
       "An open-plan loft combining industrial textures with eclectic decor pieces.",
@@ -33,6 +39,9 @@ const interiorProjects = [
     id: 3,
     slug: "elegant-workspace",
     title: "Elegant Workspace",
+    location: "Hyderabad",
+    year: 2024,
+    area: "250",
     image: "/images/interiors/workspace.jpeg",
     description:
       "A modern office layout designed with warmth and clarity for focused productivity.",
@@ -42,6 +51,8 @@ const interiorProjects = [
       "/images/interiors/workspace.jpeg",
       "/images/interiors/workspace-2.jpeg",
       "/images/interiors/workspace-3.jpeg",
+      "/images/interiors/workspace.jpeg",
+      "/images/interiors/workspace-2.jpeg",
     ],
   },
   {
