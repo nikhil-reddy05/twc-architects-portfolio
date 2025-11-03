@@ -44,7 +44,7 @@ export default function AboutPage() {
               {member.name}
             </h3>
             <p className="text-gray-400 text-sm mb-3">{member.role}</p>
-
+                {member.role2 && (<p className="text-gray-400 text-sm mb-3">{member.role2}</p>)}
             {/* Social */}
             {member.social && (
               <a
@@ -65,17 +65,8 @@ export default function AboutPage() {
 
 const team = [
   {
-    name: "Riya Kapoor",
+    name: "Ar. Pranav Jella",
     role: "Principal Architect",
-    social: "https://linkedin.com/in/riya-kapoor",
+    role2: "Director",
   },
-  {
-    name: "Aman Verma",
-    role: "Creative Director",
-    social: "https://linkedin.com/in/aman-verma",
-  },
-  { name: "Neha Sharma", role: "Interior Designer" },
-  { name: "Karan Mehta", role: "Project Manager" },
-  { name: "Simran Kaur", role: "3D Visualizer" },
-  { name: "Ankit Desai", role: "Design Associate" },
 ];
