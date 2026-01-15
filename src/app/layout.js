@@ -17,16 +17,19 @@ export const metadata = {
   description:
     "The White Walls Company Portfolio, TWC Architects - A modern architecture firm designing timeless spaces.",
   keywords: [
-    "architecture, interiors, modern design, twc architects, white walls, the white walls company",
+    "architecture", "interiors", "modern design", "twc architects", "white walls", "the white walls company", "pranav jella"
   ],
+  alternates: {
+  canonical: "https://www.twcarchitects.com",
+  },
   author: [{ name: "Pranav Jella" }, { name: "TWC Architects" }],
   creator: "Nikhil Reddy Banda",
   openGraph: {
     title: "TWC Architects",
     description:
       "The White Walls Company - A modern architecture and interior design firm.",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
-    siteName: "WC Architects",
+    url: "https://www.twcarchitects.com",
+    siteName: "TWC Architects",
     type: "website",
     images: [{ url: "/twc-b.png", alt: "The White Walls Company" }],
   },
@@ -52,6 +55,17 @@ export default function RootLayout({ children }) {
     <html lang="en" className={lexendMega.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "TWC Architects",
+              url: "https://www.twcarchitects.com",
+            }),
+          }}
+        />
       </head>
       <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
         <Toaster position="top-center" />
