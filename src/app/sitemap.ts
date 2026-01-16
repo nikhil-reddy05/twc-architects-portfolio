@@ -5,30 +5,30 @@ import interiorProjects from "@/data/interiorProjects";
 export default function sitemap(): MetadataRoute.Sitemap {
   const architectureData: MetadataRoute.Sitemap = architectureProjects.map(
     ({ slug }) => ({
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/architecture/${slug}`,
+      url: "https://www.twcarchitects.com/architecture/${slug}",
     })
   );
   const interiorData: MetadataRoute.Sitemap = interiorProjects.map(
     ({ slug }) => ({
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/interiors/${slug}`,
+      url: "https://www.twcarchitects.com/interiors/${slug}",
     })
   );
 
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+      url: "https://www.twcarchitects.com/",
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/architecture`,
+      url: "https://www.twcarchitects.com/architecture",
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/interiors`,
+      url: "https://www.twcarchitects.com/interiors",
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/contact`,
+      url: "https://www.twcarchitects.com/contact",
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/about`,
+      url: "https://www.twcarchitects.com/about",
     },
     ...architectureData,
     ...interiorData,
