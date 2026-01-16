@@ -5,12 +5,12 @@ import interiorProjects from "@/data/interiorProjects";
 export default function sitemap(): MetadataRoute.Sitemap {
   const architectureData: MetadataRoute.Sitemap = architectureProjects.map(
     ({ slug }) => ({
-      url: "https://www.twcarchitects.com/architecture/${slug}",
+      url: `https://www.twcarchitects.com/architecture/${slug}`,
     })
   );
   const interiorData: MetadataRoute.Sitemap = interiorProjects.map(
     ({ slug }) => ({
-      url: "https://www.twcarchitects.com/interiors/${slug}",
+      url: `https://www.twcarchitects.com/interiors/${slug}`,
     })
   );
 
