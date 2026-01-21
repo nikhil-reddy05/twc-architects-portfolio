@@ -13,6 +13,7 @@ const lexendMega = Lexend_Mega({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.twcarchitects.com"),
   title: "TWC Architects",
   description:
     "The White Walls Company Portfolio, TWC Architects - A modern architecture firm designing timeless spaces.",
@@ -20,7 +21,7 @@ export const metadata = {
     "architecture", "interiors", "modern design", "twc architects", "white walls", "the white walls company", "pranav jella"
   ],
   alternates: {
-  canonical: "https://www.twcarchitects.com",
+  canonical: "/",
   },
   author: [{ name: "Pranav Jella" }, { name: "TWC Architects" }],
   creator: "Nikhil Reddy Banda",
