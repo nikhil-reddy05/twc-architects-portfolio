@@ -1,7 +1,24 @@
-"use client";
+
 import { BsInstagram } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 import Quote from "@/components/Quote";
+
+export const metadata = {
+  title: "Contact | TWC Architects",
+  description:
+    "Contact TWC Architects (The White Walls Company) for architecture and interior design inquiries. Reach out by phone, email, WhatsApp, or Instagram.",
+  alternates: {
+    canonical: "https://www.twcarchitects.com/contact",
+  },
+  openGraph: {
+    title: "Contact | TWC Architects",
+    description:
+      "Get in touch with TWC Architects for architecture and interior design inquiries.",
+    url: "https://www.twcarchitects.com/contact",
+    siteName: "TWC Architects",
+    type: "website",
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -35,7 +52,7 @@ export default function ContactPage() {
       {/* CTA Buttons */}
       <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
         <a
-          href="https://wa.me/917330761540"
+          href="https://wa.me/917036113378"
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer min-w-[200px] bg-green-500 text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-green-600 transition"

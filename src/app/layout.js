@@ -21,7 +21,7 @@ export const metadata = {
     "architecture", "interiors", "modern design", "twc architects", "white walls", "the white walls company", "pranav jella"
   ],
   alternates: {
-  canonical: "/",
+  canonical:  "https://www.twcarchitects.com",
   },
   author: [{ name: "Pranav Jella" }, { name: "TWC Architects" }],
   creator: "Nikhil Reddy Banda",

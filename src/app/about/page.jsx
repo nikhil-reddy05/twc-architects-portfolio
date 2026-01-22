@@ -1,3 +1,20 @@
+export const metadata = {
+  title: "About | TWC Architects",
+  description:
+    "Learn about TWC Architects (The White Walls Company), a multidisciplinary studio creating thoughtful architecture and interiors, and meet the team.",
+  alternates: {
+    canonical: "https://www.twcarchitects.com/about",
+  },
+  openGraph: {
+    title: "About | TWC Architects",
+    description:
+      "Learn about TWC Architects (The White Walls Company) and meet the team behind the studio.",
+    url: "https://www.twcarchitects.com/about",
+    siteName: "TWC Architects",
+    type: "website",
+  },
+};
+
 export default function AboutPage() {
   return (
     <section className="pt-12 pb-8 px-6 max-w-5xl mx-auto text-white">
