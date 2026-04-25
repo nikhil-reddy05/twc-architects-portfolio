@@ -22,16 +22,16 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="pt-8 pb-2 px-6  max-w-4xl mx-auto text-white">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-10 uppercase text-center">
+    <section className="page-section px-6 max-w-4xl mx-auto flow-rhythm">
+      <h1 className="type-h1 text-center">
         Contact Us
       </h1>
 
       {/* Contact Details */}
-      <div className="space-y-6 text-sm text-gray-300 mb-12 md:text-lg">
+      <div className="space-y-6 type-body text-muted">
         <p>
           <strong>Phone:</strong>
-          <a href="tel:+917036113378" className="text-blue-400 hover:underline">
+          <a href="tel:+917036113378" className="link-accent hover:underline">
             +91 7036113378
           </a>
         </p>
@@ -39,7 +39,7 @@ export default function ContactPage() {
           <strong>Email:</strong>
           <a
             href="mailto:thewhitewallscompany@gmail.com"
-            className="text-blue-400 hover:underline"
+            className="link-accent hover:underline"
           >
             thewhitewallscompany@gmail.com
           </a>
@@ -50,12 +50,12 @@ export default function ContactPage() {
       </div>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col text-sm md:flex-row gap-4 justify-center items-center">
+      <div className="flex flex-col type-body md:flex-row gap-4 justify-center items-center">
         <a
           href="https://wa.me/917036113378"
           target="_blank"
           rel="noopener noreferrer"
-          className="cursor-pointer min-w-[200px] bg-green-500 text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-green-600 transition"
+          className="min-w-[200px] btn-accent text-center"
         >
           <p className="flex text-[14px] md:text-[17px] justify-center">
             <FaWhatsapp className="mr-2 h-6 w-6" /> WhatsApp
@@ -66,7 +66,7 @@ export default function ContactPage() {
           href="https://instagram.com/thewhitewallsco"
           target="_blank"
           rel="noopener noreferrer"
-          className="cursor-pointer min-w-[200px] bg-[#d62976] text-white font-semibold py-3 px-6 rounded-md text-center hover:bg-[#ba1c63] transition"
+          className="min-w-[200px] btn-surface text-center"
         >
           <p className="flex text-[14px] md:text-[17px] justify-center">
             <BsInstagram className="mr-2 h-6 w-6" /> Instagram
@@ -75,7 +75,7 @@ export default function ContactPage() {
       </div>
 
       {/* Google Map */}
-      <div className="mt-16 w-full rounded-lg overflow-hidden">
+      <div className="w-full rounded-[var(--radius-md)] overflow-hidden border border-[color:var(--color-border)]">
         <iframe
           title="TWC Architects Location"
           className="w-full h-64 sm:h-80 border-0"

@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Style Contract (Design System)
+
+To keep the portfolio visually consistent, all new UI should follow these global rules:
+
+- **Use design tokens from `src/app/globals.css`** for color, spacing, radius, and motion (avoid hardcoded hex colors and ad-hoc timing values).
+- **Palette:** architectural grayscale base (`--color-bg`, `--color-surface`, `--color-text`, `--color-text-muted`, `--color-border`) with one restrained accent (`--color-accent`).
+- **Typography hierarchy:** use standardized classes/tags for `display`, `h1`, `h2`, `body`, and `caption` sizing/weight/letter spacing.
+- **Layout grid:** wrap page content in `.app-container`; use `.page-section` and `.flow-rhythm` for consistent vertical spacing.
+- **Components:** prefer shared utility classes like `.surface-card`, `.field-control`, `.btn-accent`, `.btn-surface`, and `.link-accent` before creating one-off styles.

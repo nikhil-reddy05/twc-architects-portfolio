@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bottom-0 w-full text-center py-4 ${bgClass} bg-[#0a0a0a] text-gray-400 text-sm`}
+      className={`bottom-0 w-full text-center py-4 ${bgClass} bg-[color:var(--color-bg)] text-muted type-caption`}
     >
       © {new Date().getFullYear()} The White Walls Company. All rights reserved.
     </footer>

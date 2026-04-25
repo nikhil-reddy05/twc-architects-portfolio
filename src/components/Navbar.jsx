@@ -24,12 +24,12 @@ export default function Navbar() {
   const isHomePage = pathname === "/";
   const navBgClass = isHomePage
     ? "bg-transparent"
-    : "bg-[#0a0a0a]/90 backdrop-blur-sm";
+    : "bg-[color:var(--color-bg)]/90 backdrop-blur-sm";
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between transition-colors duration-300 ${navBgClass} text-white`}
+        className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between transition-colors duration-[var(--motion-250)] ${navBgClass} text-[color:var(--color-text)]`}
       >
         {/* Logo */}
         <Link
@@ -50,10 +50,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-[var(--motion-250)] ${
                   isActive
-                    ? "text-white font-semibold"
-                    : "text-gray-300 hover:text-white"
+                    ? "text-[color:var(--color-text)] font-semibold"
+                    : "text-muted hover:text-[color:var(--color-text)]"
                 }`}
               >
                 {link.label}
@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* Hamburger Button */}
         <button
-          className="lg:hidden text-white z-50"
+          className="lg:hidden text-[color:var(--color-text)] z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-controls="mobile-menu"
@@ -77,7 +77,7 @@ export default function Navbar() {
       {/* Mobile Menu Overlay with Animation */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-[var(--motion-250)] ease-[var(--ease-standard)] ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)} // Close menu when clicking the overlay
@@ -86,12 +86,12 @@ export default function Navbar() {
 
         {/* Sliding Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-4/5 max-w-sm bg-[#0a0a0a] shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`absolute top-0 right-0 h-full w-4/5 max-w-sm bg-[color:var(--color-bg)] border-l border-[color:var(--color-border)] shadow-lg transform transition-transform duration-[var(--motion-250)] ease-[var(--ease-standard)] ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()} // Prevent clicks inside the menu from closing it
         >
-          <div className="flex flex-col items-center justify-center h-full space-y-8 text-xl uppercase text-white">
+          <div className="flex flex-col items-center justify-center h-full space-y-8 text-xl uppercase text-[color:var(--color-text)]">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (

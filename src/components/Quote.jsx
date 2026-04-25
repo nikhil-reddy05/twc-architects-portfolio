@@ -121,14 +121,14 @@ Looking forward to hearing from you!`;
   };
 
   return (
-    <section className="pt-12 pb-8 max-w-2xl mx-auto px-4">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-8 uppercase text-center">
+    <section className="page-section max-w-2xl mx-auto px-4 flow-rhythm">
+      <h1 className="type-h1 text-center">
         Get a Quote
       </h1>
 
       <form
         onSubmit={handleEmailSubmit}
-        className="space-y-6 text-sm md:text-lg"
+        className="space-y-6 type-body"
       >
         <input
           type="text"
@@ -136,7 +136,7 @@ Looking forward to hearing from you!`;
           placeholder="Your Name"
           required
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400"
+          className="field-control"
         />
 
         <input
@@ -145,7 +145,7 @@ Looking forward to hearing from you!`;
           placeholder="Your Email"
           required
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400"
+          className="field-control"
         />
 
         <input
@@ -153,14 +153,14 @@ Looking forward to hearing from you!`;
           name="phone"
           placeholder="Phone Number (optional)"
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400"
+          className="field-control"
         />
 
         <select
           name="type"
           required
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white"
+          className="field-control"
         >
           <option value="">Select Project Type</option>
           <option value="Architecture">Architecture</option>
@@ -171,7 +171,7 @@ Looking forward to hearing from you!`;
         <select
           name="budget"
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white"
+          className="field-control"
         >
           <option value="">Select Budget Range</option>
           <option value="Under ₹5L">Under ₹5L</option>
@@ -186,13 +186,13 @@ Looking forward to hearing from you!`;
           required
           rows="5"
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400"
+          className="field-control"
         />
 
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             type="submit"
-            className="flex-1 bg-white text-black font-semibold py-3 rounded-md hover:bg-gray-200 transition cursor-pointer"
+            className="flex-1 btn-surface"
           >
             Send via Email
           </button>
@@ -200,7 +200,7 @@ Looking forward to hearing from you!`;
           <button
             type="button"
             onClick={handleWhatsAppClick}
-            className="flex-1 bg-green-500 text-white font-semibold py-3 rounded-md hover:bg-green-600 transition cursor-pointer"
+            className="flex-1 btn-accent"
           >
             Send via WhatsApp
           </button>
