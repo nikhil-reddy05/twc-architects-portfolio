@@ -85,13 +85,13 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navSurfaceClass = isScrolled
-    ? "bg-[color:var(--color-bg)]/72 backdrop-blur-md border-b border-[color:var(--color-border)]"
-    : "bg-[color:var(--color-bg)]/28 backdrop-blur-sm border-b border-transparent";
+    ? "bg-transparent border-b border-[color:var(--color-border)]"
+    : "bg-transparent border-b border-transparent";
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 text-[color:var(--color-text)] transition-[background-color,border-color,backdrop-filter] duration-300 ease-[var(--ease-standard)] motion-reduce:transition-none ${navSurfaceClass}`}
+        className={`fixed top-0 left-0 w-full z-50 text-[color:var(--color-text)] transition-[background-color,border-color] duration-300 ease-[var(--ease-standard)] motion-reduce:transition-none ${navSurfaceClass}`}
       >
         <div className="app-container min-h-16 flex items-center justify-between gap-4">
           <Link
