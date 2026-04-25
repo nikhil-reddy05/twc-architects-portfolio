@@ -68,11 +68,11 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
+      <body className="font-sans antialiased min-h-screen flex flex-col">
         <Toaster position="top-center" />
         <Navbar />
         <main className="pt-12 pb-8 md:pt-20 flex-1">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="app-container">
             {children}
             <SpeedInsights />
             <Analytics />

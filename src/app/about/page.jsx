@@ -17,13 +17,13 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="pt-12 pb-8 px-6 max-w-5xl mx-auto text-white">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-8 uppercase text-center">
+    <section className="page-section px-6 max-w-5xl mx-auto flow-rhythm">
+      <h1 className="type-h1 text-center">
         About Us
       </h1>
 
       {/* Firm Story */}
-      <div className="mb-12 space-y-4 text-base leading-relaxed text-gray-300 md:text-lg">
+      <div className="space-y-4 type-body text-muted">
         <p>
           <strong>The White Walls Company</strong> is a multidisciplinary design
           studio committed to creating thoughtful, elegant spaces that
@@ -38,7 +38,7 @@ export default function AboutPage() {
       </div>
 
       {/* Team */}
-      <h2 className="text-lg font-semibold mb-10 uppercase text-center md:text-2xl">
+      <h2 className="type-h2 text-center">
         Meet the Team
       </h2>
 
@@ -46,7 +46,7 @@ export default function AboutPage() {
         {team.map((member, index) => (
           <div
             key={index}
-            className="bg-[#121212] rounded-xl p-6 text-center shadow-md hover:shadow-xl transition duration-300"
+            className="surface-card p-6 text-center shadow-md hover:shadow-xl transition duration-[var(--motion-250)]"
           >
             {/* Profile image placeholder */}
             <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center text-white text-xl font-bold">
@@ -57,18 +57,18 @@ export default function AboutPage() {
             </div>
 
             {/* Name & role */}
-            <h3 className="text-lg font-semibold text-white mb-1 md:text-xl">
+            <h3 className="text-lg font-semibold text-[color:var(--color-text)] mb-1 md:text-xl">
               {member.name}
             </h3>
-            <p className="text-gray-400 text-sm mb-3">{member.role}</p>
-                {member.role2 && (<p className="text-gray-400 text-sm mb-3">{member.role2}</p>)}
+            <p className="text-muted text-sm mb-3">{member.role}</p>
+                {member.role2 && (<p className="text-muted text-sm mb-3">{member.role2}</p>)}
             {/* Social */}
             {member.social && (
               <a
                 href={member.social}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-400 hover:underline"
+                className="text-sm link-accent hover:underline"
               >
                 View Profile
               </a>

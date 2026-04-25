@@ -18,8 +18,8 @@ export const metadata = {
 
 export default async function ArchitecturePage() {
   return (
-    <section className="pt-12 pb-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 uppercase">
+    <section className="page-section flow-rhythm">
+      <h2 className="type-h1 text-center">
         Our Architecture
       </h2>
       <ProjectGallery projects={architectureProjects} basePath="architecture" />

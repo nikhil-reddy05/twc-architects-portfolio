@@ -38,25 +38,25 @@ export default async function InteriorProjectPage({ params }) {
   };
 
   return (
-    <section className="pt-12 pb-8 max-w-5xl mx-auto px-4">
-      <h1 className="text-2xl sm:text-3xl font-bold uppercase mb-4 text-center">
+    <section className="page-section max-w-5xl mx-auto px-4 flow-rhythm">
+      <h1 className="type-h1 text-center">
         {project.title}
       </h1>
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm font-medium text-neutral-400 uppercase tracking-wide">
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 type-caption">
         <span>{project.year}</span>
         <span className="hidden sm:inline">|</span>
         <span>{project.location}</span>
         <span className="hidden sm:inline">|</span>
         <span>{project.area}</span>
       </div>
-      <p className="text-gray-300 text-base sm:text-lg mb-10 text-center">
+      <p className="text-muted type-body text-center">
         {project.details}
       </p>
       <div className="columns-1 lg:columns-2 gap-6 space-y-6 px-2 md:px-8">
         {project.gallery.map(({ url, width, height, resource_type }, index) => (
           <div
             key={index}
-            className="relative mb-8 break-inside-avoid overflow-hidden rounded-3xl bg-neutral-100 group"
+            className="relative mb-8 break-inside-avoid overflow-hidden rounded-[var(--radius-md)] bg-[color:var(--color-surface)] group"
           >
             <div className="relative w-full h-full">
               {resource_type === "image" ? (
