@@ -93,7 +93,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 text-[color:var(--color-text)] transition-[background-color,border-color] duration-300 ease-[var(--ease-standard)] motion-reduce:transition-none ${navSurfaceClass}`}
       >
-        <div className="app-container min-h-16 flex items-center justify-between gap-4">
+        <div className="w-full min-h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="text-base sm:text-lg font-bold tracking-[0.25em] uppercase whitespace-nowrap min-h-11 inline-flex items-center"
