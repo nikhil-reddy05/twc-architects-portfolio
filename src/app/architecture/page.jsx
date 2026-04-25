@@ -19,10 +19,18 @@ export const metadata = {
 export default async function ArchitecturePage() {
   return (
     <section className="page-section flow-rhythm">
-      <h2 className="type-h1 text-center">
-        Our Architecture
-      </h2>
-      <ProjectGallery projects={architectureProjects} basePath="architecture" />
+      <div className="mx-auto max-w-3xl space-y-5 text-center">
+        <h2 className="type-h1">Architecture Portfolio</h2>
+        <p className="type-body text-muted leading-relaxed">
+          A curated selection of residential and institutional work shaped by
+          climate, context, and craftsmanship. Explore each project for full
+          visual narratives and technical details.
+        </p>
+      </div>
+
+      <div className="pt-4 md:pt-8">
+        <ProjectGallery projects={architectureProjects} basePath="architecture" />
+      </div>
     </section>
   );
 }

@@ -1,8 +1,9 @@
 "use client";
+
 import architectureProjects from "@/data/architectureProjects";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function ArchitectureProjectPage({ params }) {
   const { slug } = params;
@@ -14,18 +15,25 @@ export default function ArchitectureProjectPage({ params }) {
     window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
   const videoRefs = useRef([]);
+  const [loadedMedia, setLoadedMedia] = useState({});
+
+  const markLoaded = (index) => {
+    setLoadedMedia((prev) => ({ ...prev, [index]: true }));
+  };
 
   const handleMouseEnter = (i) => {
     if (videoRefs.current[i] && !isMobile) {
       videoRefs.current[i].play();
     }
   };
+
   const handleMouseLeave = (i) => {
     if (videoRefs.current[i] && !isMobile) {
       videoRefs.current[i].pause();
       videoRefs.current[i].currentTime = 0;
     }
   };
+
   const handleClick = (i) => {
     if (videoRefs.current[i] && isMobile) {
       if (videoRefs.current[i].paused) {
@@ -38,57 +46,85 @@ export default function ArchitectureProjectPage({ params }) {
   };
 
   return (
-    <section className="page-section max-w-5xl mx-auto px-4 flow-rhythm">
-      <h1 className="type-h1 text-center">
-        {project.title}
-      </h1>
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 type-caption">
-        <span>{project.year}</span>
-        <span className="hidden sm:inline">|</span>
-        <span>{project.location}</span>
-        <span className="hidden sm:inline">|</span>
-        <span>{project.area}</span>
-      </div>
-      <p className="text-muted type-body text-center">
-        {project.details}
-      </p>
-      <div className="columns-1 lg:columns-2 gap-6 space-y-6 px-2 md:px-8">
-        {project.gallery.map(({ url, width, height, resource_type }, index) => (
-          <div
-            key={index}
-            className="relative mb-8 break-inside-avoid overflow-hidden rounded-[var(--radius-md)] bg-[color:var(--color-surface)] group"
-          >
-            <div className="relative w-full h-full">
-              {resource_type === "image" ? (
-                <Image
-                  src={url}
-                  alt={`${project.title} image`}
-                  width={width}
-                  height={height}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
-                  loading="lazy"
-                />
-              ) : resource_type === "video" ? (
-                <video
-                  src={url}
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  width={width}
-                  height={height}
-                  className="object-cover w-full h-full"
-                  style={{ display: "block" }}
-                  preload="metadata"
-                  muted
-                  playsInline
-                  controls={true}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={() => handleMouseLeave(index)}
-                  onClick={() => handleClick(index)}
-                  tabIndex={0}
-                />
-              ) : null}
+    <section className="page-section mx-auto max-w-6xl px-4 flow-rhythm">
+      <header className="surface-card p-6 md:p-10">
+        <div className="space-y-6">
+          <h1 className="type-h1 text-center md:text-left">{project.title}</h1>
+
+          <dl className="grid grid-cols-1 gap-4 border-t border-[color:var(--color-border)] pt-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <dt className="type-caption">Year</dt>
+              <dd className="mt-1 text-sm md:text-base">{project.year}</dd>
             </div>
-          </div>
-        ))}
+            <div>
+              <dt className="type-caption">Location</dt>
+              <dd className="mt-1 text-sm md:text-base">{project.location}</dd>
+            </div>
+            <div>
+              <dt className="type-caption">Area</dt>
+              <dd className="mt-1 text-sm md:text-base">{project.area}</dd>
+            </div>
+            <div className="sm:col-span-2 lg:col-span-1">
+              <dt className="type-caption">Details</dt>
+              <dd className="mt-1 text-sm md:text-base leading-relaxed text-muted">
+                {project.details}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-1 gap-6 md:gap-8">
+        {project.gallery.map(({ url, width, height, resource_type }, index) => {
+          const isLoaded = loadedMedia[index];
+          const orientation = width && height && width >= height ? "aspect-[16/10]" : "aspect-[4/5]";
+
+          return (
+            <article
+              key={index}
+              className="relative overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)]"
+            >
+              {!isLoaded && (
+                <div className={`absolute inset-0 animate-pulse bg-[color:var(--color-border)]/50 ${orientation}`} />
+              )}
+
+              <div className="relative">
+                {resource_type === "image" ? (
+                  <Image
+                    src={url}
+                    alt={`${project.title} image ${index + 1}`}
+                    width={width}
+                    height={height}
+                    loading="lazy"
+                    className={`h-auto w-full object-cover transition-opacity duration-500 ${
+                      isLoaded ? "opacity-100" : "opacity-0"
+                    }`}
+                    onLoad={() => markLoaded(index)}
+                  />
+                ) : resource_type === "video" ? (
+                  <video
+                    src={url}
+                    ref={(el) => (videoRefs.current[index] = el)}
+                    width={width}
+                    height={height}
+                    className={`h-auto w-full object-cover transition-opacity duration-500 ${
+                      isLoaded ? "opacity-100" : "opacity-0"
+                    }`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    controls
+                    onLoadedData={() => markLoaded(index)}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={() => handleMouseLeave(index)}
+                    onClick={() => handleClick(index)}
+                    tabIndex={0}
+                  />
+                ) : null}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
