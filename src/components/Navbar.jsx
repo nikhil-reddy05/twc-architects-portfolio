@@ -140,29 +140,39 @@ export default function Navbar() {
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-[0.28] [background-image:radial-gradient(#b9b5ad_1px,transparent_1px)] [background-size:22px_22px]"
+            className="pointer-events-none absolute inset-0 opacity-[0.62] [background-image:radial-gradient(#b9b5ad_1px,transparent_1px)] [background-size:22px_22px]"
           />
-          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-8 text-xl uppercase">
-            {navLinks.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`transition ${
-                    isActive
-                      ? "opacity-100 font-bold"
-                      : "opacity-80 hover:opacity-100"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+          <div className="relative z-10 flex h-full flex-col items-center justify-start px-8 pt-[24vh] uppercase">
+            <Image
+              src="/favicon.ico"
+              alt=""
+              width={72}
+              height={72}
+              className="mb-24 h-16 w-16 invert sm:h-[4.5rem] sm:w-[4.5rem]"
+            />
+
+            <div className="flex flex-col items-center gap-8 text-xl">
+              {navLinks.map((link) => {
+                const isActive =
+                  link.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`transition ${
+                      isActive
+                        ? "opacity-100 font-bold"
+                        : "opacity-80 hover:opacity-100"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

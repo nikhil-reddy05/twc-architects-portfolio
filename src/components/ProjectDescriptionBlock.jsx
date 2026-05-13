@@ -5,7 +5,7 @@ export default function ProjectDescriptionBlock({ project, theme }) {
 
   return (
     <section
-      className={`mx-auto ${theme.layout.maxWidth} px-6 py-9 sm:py-16 lg:px-8 lg:py-20`}
+      className={`mx-auto ${theme.layout.maxWidth} px-6 py-9 sm:py-10 md:py-12 lg:px-8 lg:py-20`}
       aria-labelledby="project-description"
     >
       <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -16,7 +16,7 @@ export default function ProjectDescriptionBlock({ project, theme }) {
           >
             Project Description
           </h2>
-          <p className="mt-6 max-w-xl text-xs leading-6 text-[#625d55] sm:mt-8 sm:text-[0.95rem] sm:leading-8 lg:text-[1.045rem]">
+          <p className="mt-6 max-w-xl text-xs leading-6 text-[#625d55] sm:text-[0.95rem] sm:leading-8 lg:mt-8 lg:text-[1.045rem]">
             {description}
           </p>
         </div>

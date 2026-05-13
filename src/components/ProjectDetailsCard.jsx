@@ -19,7 +19,7 @@ export default function ProjectDetailsCard({ project, theme }) {
       className={`mx-auto ${theme.layout.maxWidth} px-6 pb-9 sm:pb-16 lg:px-8 lg:pb-20`}
       aria-labelledby="project-details"
     >
-      <div className="rounded-[1.15rem] bg-[#f7f5ef]/20 p-5 shadow-[0_18px_55px_rgba(24,27,31,0.12)] backdrop-blur-[0.5px] sm:p-8 lg:p-9">
+      <div className="rounded-[1.15rem] p-5 shadow-[0_18px_55px_rgba(24,27,31,0.12)] sm:p-8 lg:p-9">
         <h2
           id="project-details"
           className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-[#6f6a62]"

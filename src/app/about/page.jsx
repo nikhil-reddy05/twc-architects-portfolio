@@ -42,22 +42,14 @@ export default function AboutPage() {
 
           {/* Firm Story */}
           <div
-            className="mx-auto flex max-w-[48rem] flex-col gap-5 text-left text-[0.95rem] leading-8 sm:text-center sm:text-base md:text-lg md:leading-9"
+            className="mx-auto flex max-w-[48rem] flex-col gap-4 text-left text-[0.78rem] leading-6 sm:gap-5 sm:text-center sm:text-base sm:leading-8 md:text-lg md:leading-9"
             style={{ color: content.mutedTextColor }}
           >
             <p>
-              <strong style={{ color: content.textColor }}>
-                The White Walls Company
-              </strong>{" "}
-              is a multidisciplinary design studio committed to creating
-              thoughtful, elegant spaces that seamlessly blend architecture and
-              interiors.
+              <strong style={{ color: content.textColor }}>The White Walls Company</strong> is a multidisciplinary design studio committed to creating thoughtful, elegant spaces that seamlessly blend architecture and interiors.
             </p>
             <p>
-              With a focus on minimalism, sustainability, and cultural context,
-              we craft buildings that are both functional and inspiring. From
-              residential to commercial, each project is a reflection of our
-              client’s vision and our commitment to design excellence.
+              With a focus on minimalism, sustainability, and cultural context, we craft buildings that are both functional and inspiring. From residential to commercial, each project is a reflection of our client’s vision and our commitment to design excellence.
             </p>
           </div>
         </section>
