@@ -1,6 +1,9 @@
 // app/interiors/page.jsx
 import interiorProjects from "@/data/interiorProjects";
-import ProjectGallery from "@/components/ProjectGallery";
+import DotPageBackground from "@/components/DotPageBackground";
+import ProjectHero from "@/components/ProjectHero";
+import ProjectMasonryGallery from "@/components/ProjectMasonryGallery";
+import { interiorsPageTheme } from "@/config/projectPageThemes";
 
 export const metadata = {
   title: "Interiors | TWC Architects",
@@ -18,12 +21,46 @@ export const metadata = {
 };
 
 export default function InteriorsPage() {
+  const { background, hero, gallery } = interiorsPageTheme;
+
   return (
-    <section className="pt-12 pb-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 uppercase">
-        Our Interiors
-      </h2>
-      <ProjectGallery projects={interiorProjects} basePath="interiors" />
-    </section>
+    <DotPageBackground
+      backgroundColor={background.color}
+      dotColor={background.dotColor}
+      dotOpacity={background.dotOpacity}
+      dotSize={background.dotSize}
+      dotSpacing={background.dotSpacing}
+    >
+      <ProjectHero
+        title="Interior Projects"
+        subtitle="Explore our interior works"
+        image="https://res.cloudinary.com/dseo7dzfr/image/upload/v1754439036/1301_Vasavi_ID_TWC_Architects_page-0005_cgownr.jpg"
+        imageAlt="TWC Architects interior project"
+        overlayIntensity={hero.overlayIntensity}
+        titleColor={hero.titleColor}
+        titleSize={hero.titleSize}
+        subtitleColor={hero.subtitleColor}
+        subtitleSize={hero.subtitleSize}
+        heroHeight={hero.height}
+        textAlign={hero.textAlign}
+        fadeColor={background.color}
+      />
+
+      <div
+        className={`mx-auto ${gallery.maxWidth} px-6 py-20 sm:py-24 lg:px-8 lg:py-28`}
+      >
+        <ProjectMasonryGallery
+          projects={interiorProjects}
+          basePath="interiors"
+          columns={gallery.columns}
+          gap={gallery.gap}
+          imageRadius={gallery.imageRadius}
+          nameColor={gallery.projectNameColor}
+          nameHoverColor={gallery.projectNameHoverColor}
+          nameTextSize={gallery.projectNameSize}
+          nameLetterSpacing={gallery.projectNameLetterSpacing}
+        />
+      </div>
+    </DotPageBackground>
   );
 }

@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <section className="fixed inset-0 select-none">
+    <section className="fixed inset-0 select-none bg-[#050505]">
       {images.map((src, i) => (
         <div
           key={i}
