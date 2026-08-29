@@ -12,7 +12,24 @@ export default function Quote() {
     type: "",
     budget: "",
     description: "",
+    company: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+
+  // Single source of truth for validation — used by BOTH email and WhatsApp.
+  const validateForm = () => {
+    const { name, email, phone, type, description } = formData;
+    if (!(name.trim().length >= 2 && /^[a-zA-Z\s]+$/.test(name)))
+      return "Please enter a valid name (letters only, 2+ characters).";
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email))
+      return "Please enter a valid email address.";
+    if (!(phone === "" || /^\d{10}$/.test(phone)))
+      return "Phone number must be 10 digits (or leave empty).";
+    if (type.trim().length === 0) return "Please select a project type.";
+    if (description.trim().length <= 10)
+      return "Please enter a more detailed project description (10+ characters).";
+    return null;
+  };
 
   const handleChange = (e) =>
     setFormData((prev) => ({
@@ -22,7 +39,14 @@ export default function Quote() {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    toast.loading("Sending email...");
+    const error = validateForm();
+    if (error) {
+      toast.error(error);
+      return;
+    }
+
+    setSubmitting(true);
+    const toastId = toast.loading("Sending email...");
     try {
       const res = await fetch("/api/sendEmail", {
         method: "POST",
@@ -34,11 +58,11 @@ export default function Quote() {
           type: formData.type,
           budget: formData.budget,
           description: formData.description,
+          company: formData.company,
         }),
       });
 
-      toast.dismiss();
-
+      toast.dismiss(toastId);
       if (res.ok) {
         toast.success("Email sent successfully!");
         setFormData({
@@ -48,57 +72,29 @@ export default function Quote() {
           type: "",
           budget: "",
           description: "",
+          company: "",
         });
       } else {
-        toast.error("Failed to send email. Please try again.");
+        const data = await res.json().catch(() => ({}));
+        toast.error(data.error || "Failed to send email. Please try again.");
       }
-    } catch (error) {
-      toast.dismiss();
+    } catch (err) {
+      toast.dismiss(toastId);
       toast.error("Failed to send email. Please try again.");
-      console.error("Email send error:", error);
+      console.error("Email send error:", err);
+    } finally {
+      setSubmitting(false);
     }
   };
 
   const handleWhatsAppClick = () => {
+    const error = validateForm();
+    if (error) {
+      toast.error(error);
+      return;
+    }
+
     const { name, email, phone, type, budget, description } = formData;
-
-    // Simple name validation (at least 2 chars and only letters/spaces)
-    const isValidName = name.trim().length >= 2 && /^[a-zA-Z\s]+$/.test(name);
-
-    // Basic email regex
-    const isValidEmail =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-
-    // Optional: Phone number must be 10 digits if provided
-    const isValidPhone = phone === "" || /^\d{10}$/.test(phone);
-
-    // Project type & description must be provided
-    const isValidType = type.trim().length > 0;
-    const isValidDesc = description.trim().length > 10;
-
-    // Show alerts for invalid fields
-    if (!isValidName) {
-      alert("Please enter a valid name (letters only, 2+ characters).");
-      return;
-    }
-    if (!isValidEmail) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-    if (!isValidPhone) {
-      alert("Phone number must be 10 digits (or leave empty).");
-      return;
-    }
-    if (!isValidType) {
-      alert("Please select a project type.");
-      return;
-    }
-    if (!isValidDesc) {
-      alert(
-        "Please enter a more detailed project description (10+ characters)."
-      );
-      return;
-    }
 
     // Build WhatsApp message
     const message = `Hi TWC Architects 👋,
@@ -242,12 +238,28 @@ Looking forward to hearing from you!`;
           />
         </label>
 
+        {/* Honeypot — hidden from users, catches bots. */}
+        <div className="hidden" aria-hidden="true">
+          <label>
+            Company (leave blank)
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData.company}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
         <div className="grid gap-2 pt-0.5 sm:grid-cols-2 sm:gap-3 lg:gap-4 lg:pt-2">
           <button
             type="submit"
-            className="min-h-9 rounded-full bg-[#111827] px-3 py-2 text-[12px] font-semibold tracking-normal text-white shadow-sm transition hover:bg-[#1f2937] focus:outline-none focus:ring-4 focus:ring-[#111827]/15 cursor-pointer sm:text-sm lg:min-h-12 lg:px-5 lg:py-3"
+            disabled={submitting}
+            className="min-h-9 rounded-full bg-[#111827] px-3 py-2 text-[12px] font-semibold tracking-normal text-white shadow-sm transition hover:bg-[#1f2937] focus:outline-none focus:ring-4 focus:ring-[#111827]/15 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed sm:text-sm lg:min-h-12 lg:px-5 lg:py-3"
           >
-            Send via Email
+            {submitting ? "Sending..." : "Send via Email"}
           </button>
 
           <button

@@ -3,9 +3,11 @@ import DotPageBackground from "@/components/DotPageBackground";
 import ProjectHero from "@/components/ProjectHero";
 import ProjectMasonryGallery from "@/components/ProjectMasonryGallery";
 import { architecturePageTheme } from "@/config/projectPageThemes";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbJsonLd } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "Architecture | TWC Architects",
+  title: "Architecture Projects in Hyderabad",
   description:
     "Explore selected architecture projects by TWC Architects, including villas, residences, and elevation studies.",
   alternates: {
@@ -23,7 +25,14 @@ export default async function ArchitecturePage() {
   const { background, hero, gallery } = architecturePageTheme;
 
   return (
-    <DotPageBackground
+    <>
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Architecture", path: "/architecture" },
+        ])}
+      />
+      <DotPageBackground
       backgroundColor={background.color}
       dotColor={background.dotColor}
       dotOpacity={background.dotOpacity}
@@ -61,5 +70,6 @@ export default async function ArchitecturePage() {
         />
       </div>
     </DotPageBackground>
+    </>
   );
 }

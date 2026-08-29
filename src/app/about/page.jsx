@@ -1,11 +1,13 @@
 import DotPageBackground from "@/components/DotPageBackground";
 import TeamProfileCard from "@/components/TeamProfileCard";
 import { aboutPageTheme } from "@/config/projectPageThemes";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbJsonLd } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "About | TWC Architects",
+  title: "About the Studio",
   description:
-    "Learn about TWC Architects (The White Walls Company), a multidisciplinary studio creating thoughtful architecture and interiors, and meet the team.",
+    "Learn about TWC Architects (The White Walls Company), a multidisciplinary architecture and interior design studio in Hyderabad. Meet principal architect Ar. Pranav Jella and the team.",
   alternates: {
     canonical: "https://www.twcarchitects.com/about",
   },
@@ -24,7 +26,14 @@ export default function AboutPage() {
   const principal = team[0];
 
   return (
-    <DotPageBackground
+    <>
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <DotPageBackground
       backgroundColor={background.color}
       dotColor={background.dotColor}
       dotOpacity={background.dotOpacity}
@@ -80,6 +89,7 @@ export default function AboutPage() {
         </section>
       </div>
     </DotPageBackground>
+    </>
   );
 }
 

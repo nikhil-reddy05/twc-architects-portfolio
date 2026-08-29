@@ -4,9 +4,11 @@ import DotPageBackground from "@/components/DotPageBackground";
 import ProjectHero from "@/components/ProjectHero";
 import ProjectMasonryGallery from "@/components/ProjectMasonryGallery";
 import { interiorsPageTheme } from "@/config/projectPageThemes";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbJsonLd } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "Interiors | TWC Architects",
+  title: "Interior Design Projects in Hyderabad",
   description:
     "Explore selected interior design projects by TWC Architects, crafted with a focus on light, material, and detail.",
   alternates: {
@@ -24,7 +26,14 @@ export default function InteriorsPage() {
   const { background, hero, gallery } = interiorsPageTheme;
 
   return (
-    <DotPageBackground
+    <>
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Interiors", path: "/interiors" },
+        ])}
+      />
+      <DotPageBackground
       backgroundColor={background.color}
       dotColor={background.dotColor}
       dotOpacity={background.dotOpacity}
@@ -62,5 +71,6 @@ export default function InteriorsPage() {
         />
       </div>
     </DotPageBackground>
+    </>
   );
 }

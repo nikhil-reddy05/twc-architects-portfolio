@@ -5,6 +5,12 @@ import { Lexend_Mega } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import JsonLd from "@/components/JsonLd";
+import {
+  siteConfig,
+  getLocalBusinessJsonLd,
+  getWebSiteJsonLd,
+} from "@/lib/siteConfig";
 
 const lexendMega = Lexend_Mega({
   subsets: ["latin"],
@@ -13,62 +19,75 @@ const lexendMega = Lexend_Mega({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.twcarchitects.com"),
-  title: "TWC Architects",
-  description:
-    "The White Walls Company Portfolio, TWC Architects - A modern architecture firm designing timeless spaces.",
-  keywords: [
-    "architecture", "interiors", "modern design", "twc architects", "white walls", "the white walls company", "pranav jella"
-  ],
-  alternates: {
-  canonical:  "https://www.twcarchitects.com",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
   },
-  author: [{ name: "Pranav Jella" }, { name: "TWC Architects" }],
-  creator: "Nikhil Reddy Banda",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  applicationName: siteConfig.name,
+  authors: [{ name: "Ar. Pranav Jella" }, { name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.legalName,
+  category: "Architecture & Interior Design",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "TWC Architects",
-    description:
-      "The White Walls Company - A modern architecture and interior design firm.",
-    url: "https://www.twcarchitects.com",
-    siteName: "TWC Architects",
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
     type: "website",
-    images: [{ url: "/twc-b.png", alt: "The White Walls Company" }],
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: siteConfig.ogImageWidth,
+        height: siteConfig.ogImageHeight,
+        alt: `${siteConfig.name} — ${siteConfig.legalName}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TWC Architects",
-    description:
-      "The White Walls Company - A modern architecture and interior design firm.",
-    // siteId: "1467726470533754880",
-    // creator: "@nextjs",
-    // creatorId: "1467726470533754880",
-    images: ["/twc-b.png"],
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
+  // Add your Google Search Console token here once you verify the domain:
+  // verification: { google: "your-verification-token" },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={lexendMega.variable}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "TWC Architects",
-              url: "https://www.twcarchitects.com",
-            }),
-          }}
-        />
-      </head>
-      <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
+      <body className="font-sans antialiased min-h-screen flex flex-col">
+        <JsonLd data={getLocalBusinessJsonLd()} />
+        <JsonLd data={getWebSiteJsonLd()} />
         <Toaster position="top-center" />
         <Navbar />
         <main className="pt-12 pb-0 md:pt-20 flex-1">
@@ -78,7 +97,7 @@ export default function RootLayout({ children }) {
             <Analytics />
           </div>
         </main>
-        <Footer className="bottom-0 felx-2" />
+        <Footer />
       </body>
     </html>
   );

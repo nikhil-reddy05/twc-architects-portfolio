@@ -3,12 +3,14 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import DotPageBackground from "@/components/DotPageBackground";
 import Quote from "@/components/Quote";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbJsonLd } from "@/lib/siteConfig";
 import { architecturePageTheme } from "@/config/projectPageThemes";
 
 export const metadata = {
-  title: "Contact | TWC Architects",
+  title: "Contact Us",
   description:
-    "Contact TWC Architects (The White Walls Company) for architecture and interior design inquiries. Reach out by phone, email, WhatsApp, or Instagram.",
+    "Contact TWC Architects (The White Walls Company) for architecture and interior design inquiries in Hyderabad and Nalgonda, Telangana. Reach out by phone, email, WhatsApp, or Instagram, or request a quote online.",
   alternates: {
     canonical: "https://www.twcarchitects.com/contact",
   },
@@ -52,6 +54,12 @@ export default function ContactPage() {
 
   return (
     <section className="relative left-1/2 -mt-12 w-screen -translate-x-1/2 overflow-hidden bg-[#f7f5ef] text-[#101828] md:-mt-20">
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <div className="relative min-h-[300px] overflow-hidden bg-[#111827] sm:min-h-[460px] lg:min-h-[540px]">
         <iframe
           title="TWC Architects Location"
