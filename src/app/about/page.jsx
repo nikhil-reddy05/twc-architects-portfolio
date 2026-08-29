@@ -1,7 +1,13 @@
+import DotPageBackground from "@/components/DotPageBackground";
+import TeamProfileCard from "@/components/TeamProfileCard";
+import { aboutPageTheme } from "@/config/projectPageThemes";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbJsonLd } from "@/lib/siteConfig";
+
 export const metadata = {
-  title: "About | TWC Architects",
+  title: "About the Studio",
   description:
-    "Learn about TWC Architects (The White Walls Company), a multidisciplinary studio creating thoughtful architecture and interiors, and meet the team.",
+    "Learn about TWC Architects (The White Walls Company), a multidisciplinary architecture and interior design studio in Hyderabad. Meet principal architect Ar. Pranav Jella and the team.",
   alternates: {
     canonical: "https://www.twcarchitects.com/about",
   },
@@ -16,67 +22,74 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  const { background, content, teamCard } = aboutPageTheme;
+  const principal = team[0];
+
   return (
-    <section className="pt-12 pb-8 px-6 max-w-5xl mx-auto text-white">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-8 uppercase text-center">
-        About Us
-      </h1>
-
-      {/* Firm Story */}
-      <div className="mb-12 space-y-4 text-base leading-relaxed text-gray-300 md:text-lg">
-        <p>
-          <strong>The White Walls Company</strong> is a multidisciplinary design
-          studio committed to creating thoughtful, elegant spaces that
-          seamlessly blend architecture and interiors.
-        </p>
-        <p>
-          With a focus on minimalism, sustainability, and cultural context, we
-          craft buildings that are both functional and inspiring. From
-          residential to commercial, each project is a reflection of our
-          client’s vision and our commitment to design excellence.
-        </p>
-      </div>
-
-      {/* Team */}
-      <h2 className="text-lg font-semibold mb-10 uppercase text-center md:text-2xl">
-        Meet the Team
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {team.map((member, index) => (
-          <div
-            key={index}
-            className="bg-[#121212] rounded-xl p-6 text-center shadow-md hover:shadow-xl transition duration-300"
+    <>
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <DotPageBackground
+      backgroundColor={background.color}
+      dotColor={background.dotColor}
+      dotOpacity={background.dotOpacity}
+      dotSize={background.dotSize}
+      dotSpacing={background.dotSpacing}
+    >
+      <div className="mx-auto max-w-7xl px-6 pb-20 pt-28 sm:pb-24 sm:pt-36 lg:px-8 lg:pb-32 lg:pt-40">
+        <section className={`mx-auto ${content.maxWidth} text-center`}>
+          <h1
+            className="mb-8 text-3xl font-semibold uppercase leading-tight tracking-[0.12em] sm:text-4xl"
+            style={{ color: content.headingColor }}
           >
-            {/* Profile image placeholder */}
-            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center text-white text-xl font-bold">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
+            About Us
+          </h1>
 
-            {/* Name & role */}
-            <h3 className="text-lg font-semibold text-white mb-1 md:text-xl">
-              {member.name}
-            </h3>
-            <p className="text-gray-400 text-sm mb-3">{member.role}</p>
-                {member.role2 && (<p className="text-gray-400 text-sm mb-3">{member.role2}</p>)}
-            {/* Social */}
-            {member.social && (
-              <a
-                href={member.social}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-400 hover:underline"
-              >
-                View Profile
-              </a>
-            )}
+          {/* Firm Story */}
+          <div
+            className="mx-auto flex max-w-[48rem] flex-col gap-4 text-left text-[0.78rem] leading-6 sm:gap-5 sm:text-center sm:text-base sm:leading-8 md:text-lg md:leading-9"
+            style={{ color: content.mutedTextColor }}
+          >
+            <p>
+              <strong style={{ color: content.textColor }}>The White Walls Company</strong> is a multidisciplinary design studio committed to creating thoughtful, elegant spaces that seamlessly blend architecture and interiors.
+            </p>
+            <p>
+              With a focus on minimalism, sustainability, and cultural context, we craft buildings that are both functional and inspiring. From residential to commercial, each project is a reflection of our client’s vision and our commitment to design excellence.
+            </p>
           </div>
-        ))}
+        </section>
+
+        {/* Team */}
+        <section className="mt-20 sm:mt-24 lg:mt-28">
+          <h2
+            className="mb-10 text-center text-xl font-semibold uppercase tracking-[0.16em] sm:mb-12 sm:text-2xl"
+            style={{ color: content.headingColor }}
+          >
+            Meet the Team
+          </h2>
+
+          <TeamProfileCard
+            name={principal.name}
+            role={principal.role}
+            secondaryRole={principal.role2}
+            imageSrc="/ju-profile-picture.avif"
+            imageAlt={`${principal.name}, ${principal.role}`}
+            backgroundText={principal.name}
+            cardHeight={teamCard.cardHeight}
+            cardBackground={teamCard.backgroundColor}
+            cardRadius={teamCard.radius}
+            cardShadow={teamCard.shadow}
+            backgroundTextOpacity={teamCard.backgroundTextOpacity}
+            imageClassName={teamCard.imageClassName}
+          />
+        </section>
       </div>
-    </section>
+    </DotPageBackground>
+    </>
   );
 }
 
