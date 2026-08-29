@@ -180,7 +180,7 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="https://instagram.com/thewhitewallsco"
+                    href="https://instagram.com/thewhitewallscompany"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-9 items-center justify-center gap-2 rounded-full border border-[#d8dee8] bg-white px-3 py-2 text-[12px] font-semibold tracking-normal text-[#1f2937] shadow-sm transition hover:border-[#c7ceda] hover:bg-[#f8fafc] sm:min-h-12 sm:px-5 sm:text-sm"
