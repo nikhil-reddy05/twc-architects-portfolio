@@ -42,7 +42,7 @@ export default async function ArchitecturePage() {
       <ProjectHero
         title="Architecture Projects"
         subtitle="Explore our architectural works"
-        image="https://res.cloudinary.com/dseo7dzfr/image/upload/v1754161941/Enscape_2022-11-24-18-57-40_ubgbmn.png"
+        image="https://res.cloudinary.com/dseo7dzfr/image/upload/v1788025501/Farmhouse_primary_it29ld.jpg"
         imageAlt="TWC Architects architecture project"
         overlayIntensity={hero.overlayIntensity}
         titleColor={hero.titleColor}
