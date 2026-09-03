@@ -62,9 +62,9 @@ const architectureProjects = [
     status: "Completed",
     scope: "Architecture and Interior Design",
     image: {
-      url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788024749/IMG_8420_vctxdt.heic",
-      width: 3638,
-      height: 2375,
+      url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788193739/IMG_0181_mh2xfj.png",
+      width: 1535,
+      height: 1024,
       format: "heic",
       resource_type: "image"
     },
@@ -74,32 +74,32 @@ const architectureProjects = [
       "Nestled deep in the mountains, this retreat offers serenity and panoramic forest views. The design emphasizes harmony with the environment through timber construction, elevated platforms, and glass-enclosed living areas.",
     gallery: [
       {
-        url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788024749/IMG_8420_vctxdt.heic",
-        width: 3638,
-        height: 2375,
-        format: "heic",
+        url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788193747/IMG_0178_v2hfvi.png",
+        width: 1086,
+        height: 1448,
+        format: "png",
         resource_type: "image"
       },
       {
-        url: "https://res.cloudinary.com/dseo7dzfr/video/upload/v1754162546/WhatsApp_Video_2025-08-01_at_8.22.39_AM_zfwvrf.mp4",
-        width: 720,
-        height: 1280,
-        format: "mp4",
-        resource_type: "video",
+        url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788193738/IMG_0179_pbb2zy.png",
+        width: 1030,
+        height: 1526,
+        format: "png",
+        resource_type: "image"
       },
       {
-        url: "https://res.cloudinary.com/dseo7dzfr/video/upload/v1754162544/WhatsApp_Video_2025-08-01_at_8.22.38_AM_glcuzo.mp4",
-        width: 720,
-        height: 1280,
-        format: "mp4",
-        resource_type: "video",
+        url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788193738/IMG_0180_dvacxj.jpg",
+        width: 1088,
+        height: 1446,
+        format: "jpg",
+        resource_type: "image"
       },
       {
-        url: "https://res.cloudinary.com/dseo7dzfr/video/upload/v1754162543/WhatsApp_Video_2025-08-01_at_8.22.38_AM_1_wmgzmf.mp4",
-        width: 720,
-        height: 1280,
-        format: "mp4",
-        resource_type: "video",
+        url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1788193736/IMG_0177_deqxjg.jpg",
+        width: 1118,
+        height: 1407,
+        format: "jpg",
+        resource_type: "image"
       },
       {
         url: "https://res.cloudinary.com/dseo7dzfr/image/upload/v1754162541/WhatsApp_Image_2025-08-01_at_9.54.22_AM_flusk3.jpg",
